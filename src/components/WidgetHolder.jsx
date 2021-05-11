@@ -58,7 +58,7 @@ class WidgetHolder extends Component{
     async componentDidMount() {
         try {
           setInterval(async () => {
-            const res = await fetch('http://192.168.225.38:8083/test/ui-details',{method:'POST',mode:'cors', headers: new Headers({'env':'it21'})});
+            const res = await fetch('https://api-dashboard-backend.herokuapp.com/test/ui-details',{method:'POST',mode:'cors', headers: new Headers({'env':'it21'})});
             const jsonData1 = await res.json();
             this.setState({data:jsonData1})
           }, 1000);
