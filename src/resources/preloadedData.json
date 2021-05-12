@@ -1,0 +1,89 @@
+[
+    {
+        "team": "Customer Dashboard",
+        "apiName": "Post API Test",
+        "environment": "IT21",
+        "envBatch": "warning",
+        "status": "Api Down",
+        "statusBatch": "danger",
+        "key": "post-api-test-local-running-instance",
+        "description": "Post api description",
+        "availability": "0.00",
+        "totalHits": "134",
+        "successHits": "0",
+        "lastUpdated": "3 Seconds",
+        "progressBar": "danger",
+        "metadata": [
+            {
+                "attribute": "apiName",
+                "value": "Post API Test"
+            },
+            {
+                "attribute": "version",
+                "value": "1.0"
+            },
+            {
+                "attribute": "git-url",
+                "value": "https://www.google.com"
+            }
+        ]
+    },
+    {
+        "team": null,
+        "apiName": "Json Place holder API",
+        "environment": "IT21",
+        "envBatch": "warning",
+        "status": "Working",
+        "statusBatch": "success",
+        "key": "json-placeholder-api-always-available",
+        "description": "Post api description",
+        "availability": "100.00",
+        "totalHits": "134",
+        "successHits": "134",
+        "lastUpdated": "3 Seconds",
+        "progressBar": "success",
+        "metadata": [
+            {
+                "attribute": "apiName",
+                "value": "Json Place holder API"
+            },
+            {
+                "attribute": "version",
+                "value": "1.0"
+            },
+            {
+                "attribute": "git-url",
+                "value": "https://jsonplaceholder.typicode.com"
+            }
+        ]
+    },
+    {
+        "team": "Open Source API",
+        "apiName": "7Timer !",
+        "environment": "IT21",
+        "envBatch": "warning",
+        "status": "Working",
+        "statusBatch": "success",
+        "key": "www-7timer-info",
+        "description": "7Timer! is a series of web-based meteorological forecast products, mainly derived from the NOAA/NCEP-based numeric weather model",
+        "availability": "100.00",
+        "totalHits": "133",
+        "successHits": "133",
+        "lastUpdated": "62 Seconds",
+        "progressBar": "success",
+        "metadata": [
+            {
+                "attribute": "apiName",
+                "value": "7Timer !"
+            },
+            {
+                "attribute": "version",
+                "value": "2.1"
+            },
+            {
+                "attribute": "url",
+                "value": "http://www.7timer.info/doc.php?lang=en"
+            }
+        ]
+    }
+]
