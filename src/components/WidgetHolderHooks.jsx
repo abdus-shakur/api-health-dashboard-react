@@ -4,9 +4,7 @@ import Profile from '../resources/preloadedData';
 
 function WidgetHolder() {
 
-    var widgetData = Profile;
-
-    var [widgetData, setwidgetData] = useState(widgetData);
+    var [widgetData, setwidgetData] = useState(Profile);
     
     useEffect(() => {
         const interval = process.env.REACT_APP_WIDGET_POLLING_INTERVAL;

@@ -1,10 +1,10 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect} from 'react';
 
 
 function AvailabilityWidget(props) {
     var envBatch = "badge badge-" + props.widgetDetails.envBatch;
     var apiStatusBatch = "badge badge-pill badge-" + props.widgetDetails.statusBatch;
-    var progressBarWidth = { width: new String(props.widgetDetails.availability) + "%" };
+    var progressBarWidth = { width: props.widgetDetails.availability+"%" };
     var uniqueId = "#" + props.widgetDetails.key;
     var progressBarClass = "progress-bar bg-" + props.widgetDetails.progressBar + " progress-bar-striped progress-bar-animated"
     var metadata = props.widgetDetails.metadata;
