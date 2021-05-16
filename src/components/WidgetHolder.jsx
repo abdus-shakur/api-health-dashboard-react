@@ -1,78 +1,26 @@
-import AvailabilityWidget from '../components/availabilityWidget'
-import React, { useState,useEffect,Component } from 'react';
+import AvailabilityWidget from './availabilityWidget'
+import React, { useState, useEffect } from 'react';
+import Profile from '../resources/preloadedData';
+import WidgetAdapter from '../adapters/widgetAdapter'
+import Constants from "../constants/configurations"
 
-class WidgetHolder extends Component{
-    state = {
-        data: [{
-                    team:"Customer Dashboard",
-                    apiName:"Customer Service API",
-                    environment:"IT4",
-                    envBatch:"info",
-                    status:"API Down",
-                    statusBatch:"danger",
-                    key:"some-name-assigned-for-this-api-value-random",
-                    description:"This api aids to fetch acc",
-                    availability:"30.00",
-                    totalHits:"17803",
-                    successHits:"9888",
-                    lastUpdated:"5 mins",
-                    progressBar:"danger",
-                    metadata:[
-                        {
-                            attribute:"End Point",
-                            value:"https://www.google.com/search?q=collapsible+card+bootstrap&oq=collapsable+card+&aqs=chrome.1.69i57j0i10l9.6751j1j7&sourceid=chrome&ie=UTF-8"
-                        }
-                    ]
-                },
-                {
-                    team:"Customer Dashboard",
-                    apiName:"Account Summary API",
-                    environment:"IT4",
-                    envBatch:"info",
-                    status:"Working",
-                    statusBatch:"success",
-                    key:"some-name-assigned-for-this-api-value-random-1",
-                    description:"This api aids to fetch acc",
-                    availability:"80.00",
-                    totalHits:"100",
-                    successHits:"98",
-                    lastUpdated:"5 mins",
-                    progressBar:"success",
-                    metadata:[
-                        {
-                            attribute:"End Point",
-                            value:"https://www.google.com/search?q=collapsible+card+bootstrap&oq=collapsable+card+&aqs=chrome.1.69i57j0i10l9.6751j1j7&sourceid=chrome&ie=UTF-8"
-                        },
-                        {
-                            attribute:"Request Body",
-                            value:"{\"QUery\":\"value\"}"
-                        },
-                        {
-                            attribute:"User",
-                            value:"Test User ID"
-                        }
-                    ]
-                }]
-        };
+function WidgetHolder() {
 
-    async componentDidMount() {
-        try {
-          setInterval(async () => {
-            const res = await fetch('https://api-dashboard-backend.herokuapp.com/test/ui-details',{method:'POST',mode:'cors', headers: new Headers({'env':'it21'})});
-            const jsonData1 = await res.json();
-            this.setState({data:jsonData1})
-          }, 30000);
-        } catch(e) {
-          console.log(e);
-        }
-    };
+    var [widgetData, setwidgetData] = useState(Profile);
+    
+    useEffect(() => {
+        const interval = process.env.REACT_APP_WIDGET_POLLING_INTERVAL;
+        WidgetAdapter.callWidgetDetails(setwidgetData,Constants.DEFAULT_ENVIRONMENT);
+        const periodicalFetch = setInterval(()=>WidgetAdapter.callWidgetDetails(setwidgetData,Constants.DEFAULT_ENVIRONMENT), interval);
+        return () => { clearInterval(periodicalFetch);};
+    }, []);
 
-   render(){
-    return(
+
+    return (
         <main role="main" className="inner cover">
-            {this.state.data.map(data1=>(<AvailabilityWidget widgetDetails={data1} key={data1.key}/>))}
+            {widgetData.map(data1 => (<AvailabilityWidget widgetDetails={data1} key={data1.key+data1.lastUpdated} />))}
         </main>
-     );   }
+    );
 
 }
 

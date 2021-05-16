@@ -2,7 +2,7 @@
     {
         "team": "Customer Dashboard",
         "apiName": "Post API Test",
-        "environment": "IT21",
+        "environment": "IT1",
         "envBatch": "warning",
         "status": "Api Down",
         "statusBatch": "danger",
@@ -29,9 +29,9 @@
         ]
     },
     {
-        "team": null,
+        "team": "Free to Use API",
         "apiName": "Json Place holder API",
-        "environment": "IT21",
+        "environment": "IT1",
         "envBatch": "warning",
         "status": "Working",
         "statusBatch": "success",

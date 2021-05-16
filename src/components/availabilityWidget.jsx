@@ -1,12 +1,7 @@
-import { useState, useEffect} from 'react';
-
+import { useState, useEffect } from 'react';
 
 function AvailabilityWidget(props) {
-    var envBatch = "badge badge-" + props.widgetDetails.envBatch;
-    var apiStatusBatch = "badge badge-pill badge-" + props.widgetDetails.statusBatch;
-    var progressBarWidth = { width: props.widgetDetails.availability+"%" };
-    var uniqueId = "#" + props.widgetDetails.key;
-    var progressBarClass = "progress-bar bg-" + props.widgetDetails.progressBar + " progress-bar-striped progress-bar-animated"
+    var progressBarWidth = { width: props.widgetDetails.availability + "%" };
     var metadata = props.widgetDetails.metadata;
     var [seconds, setSeconds] = useState(Number(props.widgetDetails.lastUpdated.split(" ")[0]));
 
@@ -29,7 +24,7 @@ function AvailabilityWidget(props) {
                         <p className="card-text text-left">{props.widgetDetails.team}</p>
                     </div>
                     <div className="p-2 bd-highlight">
-                        <p className="card-text text-right">Test Environment <span className={envBatch}>{props.widgetDetails.environment}</span>
+                        <p className="card-text text-right">Test Environment <span className={'badge badge-' + props.widgetDetails.envBatch}>{props.widgetDetails.environment}</span>
                         </p>
                     </div>
                 </div>
@@ -39,7 +34,7 @@ function AvailabilityWidget(props) {
                     <div className="row">
                         <div className="col-md">
                             <h5 className="card-title text-left">{props.widgetDetails.apiName}    <span
-                                className={apiStatusBatch}>{props.widgetDetails.status}</span></h5>
+                                className={'badge badge-pill badge-' + props.widgetDetails.statusBatch}>{props.widgetDetails.status}</span></h5>
                         </div>
                         <div className="col-md">
                             <p className="card-text text-right">{props.widgetDetails.key}</p>
@@ -56,7 +51,7 @@ function AvailabilityWidget(props) {
                 </div>
 
                 <div className="progress ml-3">
-                    <div className={progressBarClass}
+                    <div className={'progress-bar bg-' + props.widgetDetails.progressBar + ' progress-bar-striped progress-bar-animated'}
                         role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"
                         style={progressBarWidth}></div>
                 </div>
@@ -76,7 +71,7 @@ function AvailabilityWidget(props) {
                 <p className="card-text"><small className="text-muted">Last updated {seconds} Seconds ago</small></p>
                 <p>
                     <button className="btn btn-white btn-outline-success" type="button" data-toggle="collapse"
-                        data-target={uniqueId} aria-expanded="false" aria-controls="collapseExample">
+                        data-target={"#" + props.widgetDetails.key} aria-expanded="false" aria-controls="collapseExample">
                         View More Info
                         </button>
                 </p>
