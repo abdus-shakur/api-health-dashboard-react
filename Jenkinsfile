@@ -20,13 +20,12 @@ pipeline {
                 }
             }
         }
-        stage('print project contents'){
+        stage('Build & Deploy Project to Git'){
             steps{
                      nodejs(nodeJSInstallationName: 'Node 14.7'){
                         bat 'npm run build'
                      }
                 }
-            }
             post{
                 always{
                      bat '''
